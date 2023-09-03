@@ -1,0 +1,24 @@
+Api links
+localhost:8080/
+orders:
+	Get:localhost:8080/order/getAll
+	 Get:localhost:8080/order/getOrderDetails
+	Post:localhost:8080/order/createOrder
+	Put/update:localhost:8080/order/updateOrder
+	Delete:localhost:8080/order/deleteOrder
+invoice:
+	Get:localhost:8080/invoice/generateInvoice
+
+Product:
+	Get:localhost:8080/products/getallProducts    
+	Get:localhost:8080/products/findProductsByName    	
+	Post:localhost:8080/products/addProducts
+	Put/Update:localhost:8080/products/updateProducts
+	Delete:localhost:8080/products/deleteProducts
+Orderers:
+	Get:localhost:8080/orderer/getOrdererById		
+	Get:localhost:8080/orderer/getAll
+	Post:localhost:8080/orderer/addOrderer
+	Put/Update:localhost:8080/orderer/updateOrderer
+	Delete:localhost:8080/orderer/deleteAll
+	Delete:localhost:8080/orderer/deleteById
