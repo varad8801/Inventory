@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <link rel="stylesheet" href="css/showorders.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Order List</h1>
+        <input type="text" id="searchInput" placeholder="Search by Order Name">
+        <button id="searchButton">Search</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Name</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody"></tbody>
+        </table>
+        <ul id="pagination" class="pagination"></ul>
+    </div>
+
+    <script src="js/showorders.js"></script>
+</body>
+</html>

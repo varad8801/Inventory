@@ -3,6 +3,7 @@ package com.vss.Inventory.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,17 +24,17 @@ public class productController
 	productService pservice;
 	@GetMapping("getallProducts")
 	@ResponseBody
-	public List<Product> getallproducts() {
+	public ResponseEntity<List<Product>> getallproducts() {
 		return pservice.getallprodcts();
 	}
 	
 	@PostMapping("addProducts")
-	public String addproducts(@RequestBody List<Product>products) {
+	public ResponseEntity<String> addproducts(@RequestBody List<Product>products) {
 		return pservice.addproducts(products);
 	}
 	
 	@GetMapping("findProductsByName")
-	public Product findproductsbyname(@RequestParam String productName){
+	public ResponseEntity<Product> findproductsbyname(@RequestParam String productName){
 		return pservice.findproductsbyname(productName);
 	}
 	
@@ -43,7 +44,7 @@ public class productController
 	}
 	
 	@DeleteMapping("deleteProducts")
-	public String deleteproducts(@RequestParam List<String> productName ) {
+	public ResponseEntity<String> deleteproducts(@RequestParam List<String> productName ) {
 		return pservice.deleteproducts(productName);
 		//return null;
 	}

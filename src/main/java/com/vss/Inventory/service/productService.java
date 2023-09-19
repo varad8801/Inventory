@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.vss.Inventory.Dao.productDao;
@@ -13,21 +17,30 @@ import com.vss.Inventory.model.Product;
 public class productService {
 	@Autowired
 	productDao pdao;
-	public List<Product> getallprodcts() {
+	public ResponseEntity<List<Product>> getallprodcts() {
 		// TODO Auto-generated method stub
-		return pdao.findAll();	
+		List<Product> result=pdao.findAll();
+		if(result.isEmpty()) {
+			return  new ResponseEntity<>(result,HttpStatus.NOT_FOUND);	
+		}
+		return  new ResponseEntity<>(result,HttpStatus.OK);	
 		
 	}
-	public String addproducts(List<Product> products) {
+	public ResponseEntity<String> addproducts(List<Product> products) {
 		// TODO Auto-generated method stub
 		pdao.saveAll(products);
-		return "Added "+ products.size()+ " products";
+		return new ResponseEntity<>("Added "+ products.size()+ " products",HttpStatus.OK);
 	}
-	public Product findproductsbyname(String productName) {
+	public ResponseEntity<Product> findproductsbyname(String productName)  {
 		// TODO Auto-generated method stub
 		
-		 
-		 	return pdao.findByproductName(productName);
+		 Product result = pdao.findByproductName(productName);
+		 if(result==null) 
+		 {
+			 	return new ResponseEntity<>( result,HttpStatus.NOT_FOUND);
+			 
+		 }
+		 	return new ResponseEntity<>( result,HttpStatus.OK);
 	}
 	public String updateproducts(List<Product> products) {
 		// TODO Auto-generated method stub
@@ -36,25 +49,26 @@ public class productService {
 		return "Updated "+ products.size()+ " products";
 	}
 	
-	public String deleteproducts(List<String> productName) {
+	public ResponseEntity<String> deleteproducts(List<String> productName) {
 		// TODO Auto-generated method stub
 		boolean isempty=false;
 		List<String> res=new ArrayList<String>();
 		for(String i:productName) {
-			if(findproductsbyname(i)==null) {
-				isempty=true;
-				res.add(i+" Notfound");
-			}
-			else
-			{
-				pdao.delete(findproductsbyname(i));
+	  if(findproductsbyname(i).getBody()==null) {
+		  isempty=true;
+		  
+	  }
+	  else {
+				pdao.delete( findproductsbyname(i).getBody());
 				isempty=false;
-				res.add(i+" Deleted");
-			}
+	  }
+			
 		}
-		
+		if(isempty==true) {
+			return new ResponseEntity<>("Product Not Found",HttpStatus.NOT_FOUND);
+		}
 	//	System.out.println(res);
-		return res.toString();
+		 return new ResponseEntity<>("Product Deleted",HttpStatus.OK);
 		
 		
 		}

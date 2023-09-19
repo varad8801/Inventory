@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/prddetails.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="mb-4">Product Management</h1>
+
+        <!-- Add Product Form -->
+        <div class="card mb-4">
+            <div class="card-header"><h2>Add Product</h2></div>
+            <div class="card-body">
+                <form id="addProductForm">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="productName" class="form-control mb-2" required>
+                    
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" class="form-control mb-2">
+                    
+                    <label for="subCategory">SubCategory:</label>
+                    <input type="text" id="subCategory" name="subCategory" class="form-control mb-2">
+                    
+                    <label for="productWeight">Product Weight:</label>
+                    <input type="text" id="productWeight" name="productWeight" class="form-control mb-2">
+                    
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" class="form-control mb-2">
+                    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control mb-2" min="0">
+                    
+                    <label for="minimumQuantity">Minimum Quantity:</label>
+                    <input type="number" id="minimumQuantity" name="minimumQuantity" class="form-control mb-2" min="0">
+                    
+                    <label for="maximumQuantity">Maximum Quantity:</label>
+                    <input type="number" id="maximumQuantity" name="maximumQuantity" class="form-control mb-2" min="0">
+                    
+                    <label for="reorderPoint">Reorder Point:</label>
+                    <input type="number" id="reorderPoint" name="reorderPoint" class="form-control mb-2" min="0">
+                    
+                    <label for="supplierInfo">Supplier Info:</label>
+                    <input type="text" id="supplierInfo" name="supplierInfo" class="form-control mb-2">
+                    
+                    <label for="barcode">Barcode:</label>
+                    <input type="text" id="barcode" name="barcode" class="form-control mb-2">
+                    
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" class="form-control mb-2">
+                    
+                    <label for="expirationDate">Expiration Date:</label>
+                    <input type="date" id="expirationDate" name="expirationDate" class="form-control mb-2">
+                    
+                    <label for="manufacturingDate">Manufacturing Date:</label>
+                    <input type="date" id="manufacturingDate" name="manufacturingDate" class="form-control mb-2">
+                    
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" name="notes" class="form-control mb-2"></textarea>
+                    
+                    <label for="weight">Weight:</label>
+                    <input type="number" id="weight" name="weight" class="form-control mb-2" min="0" step="0.01">
+                    
+                    <label for="length">Length:</label>
+<input type="number" id="length" name="length" class="form-control mb-2" min="0" step="0.01">
+
+<label for="width">Width:</label>
+<input type="number" id="width" name="width" class="form-control mb-2" min="0" step="0.01">
+
+<label for="height">Height:</label>
+<input type="number" id="height" name="height" class="form-control mb-2" min="0" step="0.01">
+
+<!-- Add the new properties below -->
+
+<label for="unitPrice">Unit Price:</label>
+<input type="number" id="unitPrice" name="unitPrice" class="form-control mb-2" min="0" step="0.01">
+
+<label for="costPrice">Cost Price:</label>
+<input type="number" id="costPrice" name="costPrice" class="form-control mb-2" min="0" step="0.01">
+
+<label for="bulkPrice">Bulk Price:</label>
+<input type="number" id="bulkPrice" name="bulkPrice" class="form-control mb-2" min="0" step="0.01">
+
+                    
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Find Product by Name Form -->
+        <div class="card mb-4">
+            <div class="card-header"><h2>Find Product by Name</h2></div>
+            <div class="card-body">
+                <form id="findProductForm">
+                    <label for="findProductName">Product Name:</label>
+                    <input type="text" id="findProductName" class="form-control mb-2" required>
+                    <button type="submit" class="btn btn-primary">Find Product</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Display Found Product Information in Styled Table -->
+        <div id="foundProductInfo"></div>
+
+        <!-- Update Product -->
+        <div class="card mb-4">
+            <div class="card-header"><h2>Update Product</h2></div>
+            <div class="card-body">
+                <form id="updateProductForm">
+                    <label for="productId">Product ID:</label>
+                    <input type="number" id="productId" name="productId" class="form-control mb-2" required>
+                    <label for="updatedProductName">New Product Name:</label>
+                    <input type="text" id="updatedProductName" name="productName" class="form-control mb-2">
+                    <!-- Add other input fields for updating product details -->
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Product -->
+        <div class="card mb-4">
+            <div class="card-header"><h2>Delete Product</h2></div>
+            <div class="card-body">
+                <input type="text" id="deleteProductName" class="form-control mb-2" placeholder="Enter Product Name">
+                <button onclick="deleteProductByName()" class="btn btn-danger">Delete Product</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="js/prddetails.js"></script>
+</body>
+</html>
